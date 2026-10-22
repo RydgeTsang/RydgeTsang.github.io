@@ -1,3 +1,4 @@
+import { engineeringFields } from './src/lib/engineering-schema';
 import { about } from './src/lib/about-schema';
 import { config, fields, collection } from '@keystatic/core';
 import { categories } from './src/lib/categories';
@@ -9,6 +10,7 @@ export default config({storage:{kind:'local'},singletons:{about},collections:{pr
  tags:fields.array(fields.text({label:'标签'}),{label:'技术标签',itemLabel:p=>p.value}),
  cover:fields.image({label:'封面',directory:'public/images/projects',publicPath:'/images/projects/'}),
  body:fields.markdoc({label:'项目正文',options:{image:{directory:'public/images/projects',publicPath:'/images/projects/'}}}),
+ ...engineeringFields,
  source:fields.url({label:'源码链接'}),demo:fields.url({label:'演示链接'}),docs:fields.url({label:'文档链接'}),
  status:fields.select({label:'发布状态',options:[{label:'草稿',value:'draft'},{label:'发布',value:'published'}],defaultValue:'draft'}),
  order:fields.integer({label:'排序（越小越靠前）',defaultValue:0}),featured:fields.checkbox({label:'首页推荐',defaultValue:false})

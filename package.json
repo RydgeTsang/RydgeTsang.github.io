@@ -1,1 +1,22 @@
-{"name":"rydge-code-space","private":true,"type":"module","scripts":{"dev":"astro dev --host 127.0.0.1","build":"astro build","preview":"astro preview --host 127.0.0.1"},"dependencies":{"astro":"^5.0.0","@astrojs/react":"^4.0.0","@keystatic/core":"^0.5.0","@keystatic/astro":"^5.0.0","react":"^19.0.0","react-dom":"^19.0.0","@markdoc/markdoc":"^0.5.0","tailwindcss":"^3.4.0","@astrojs/tailwind":"^6.0.0"}}
+{
+  "name": "rydge-code-space",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/react": "^4.0.0",
+    "@keystatic/core": "^0.5.0",
+    "@keystatic/astro": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@markdoc/markdoc": "^0.5.0",
+    "tailwindcss": "^3.4.0",
+    "@astrojs/tailwind": "^6.0.0"
+  }
+}

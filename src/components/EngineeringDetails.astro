@@ -1,0 +1,21 @@
+---
+import { parseVideo } from '../lib/video.mjs';
+const { entry:p } = Astro.props;
+const videos=(p.videos || []).map(video=>{
+ const media=parseVideo(video.input);
+ if(!media) throw new Error(`Invalid video in project "${p.title}": ${video.title}. Please use a YouTube or Bilibili video URL.`);
+ return {...video,media};
+});
+const panels='rounded-lg border border-gray-700 bg-dark/60 p-6 md:p-8';
+---
+<div class="space-y-8 mt-10">
+  {p.platforms?.length>0 && <section class={panels}>
+    <h2 class="text-2xl font-bold mb-5">Hardware Platforms</h2>
+    <div class="grid sm:grid-cols-2 gap-4">{p.platforms.map(platform=><div class="rounded-lg bg-gray-800/60 p-4 min-w-0"><h3 class="font-semibold text-secondary break-words">{platform.name}</h3>{platform.description&&<p class="text-gray-300 mt-2 break-words">{platform.description}</p>}</div>)}</div>
+  </section>}
+  {p.responsibilities && <section class={panels}><h2 class="text-2xl font-bold mb-5">My Contribution</h2><p class="text-gray-300 whitespace-pre-line break-words">{p.responsibilities}</p></section>}
+  {p.diagrams?.length>0 && <section class={panels}><h2 class="text-2xl font-bold mb-5">System Architecture & Images</h2><div class="space-y-8">{p.diagrams.map(diagram=><figure><h3 class="text-lg font-semibold mb-3">{diagram.title}</h3><a href={diagram.image} target="_blank" rel="noopener noreferrer"><img src={diagram.image} alt={diagram.title} loading="lazy" class="w-full rounded-lg object-contain bg-gray-900/30"/></a>{diagram.caption&&<figcaption class="text-sm text-gray-300 mt-3 whitespace-pre-line">{diagram.caption}</figcaption>}</figure>)}</div></section>}
+  {p.hardware?.length>0 && <section class={panels}><h2 class="text-2xl font-bold mb-5">Hardware List</h2><div class="overflow-x-auto"><table class="w-full text-left text-sm"><thead class="text-gray-400 border-b border-gray-700"><tr><th scope="col" class="p-3">Component</th><th scope="col" class="p-3">Model / Spec</th><th scope="col" class="p-3">Qty</th><th scope="col" class="p-3">Purpose / Notes</th></tr></thead><tbody>{p.hardware.map(item=><tr class="border-b border-gray-800 align-top"><th scope="row" class="p-3 font-medium">{item.url?<a class="text-secondary" href={item.url} target="_blank" rel="noopener noreferrer">{item.name} ↗</a>:item.name}</th><td class="p-3">{item.model || '—'}</td><td class="p-3">{item.quantity}</td><td class="p-3 text-gray-300"><p>{item.purpose}</p>{item.notes&&<p class="mt-1 whitespace-pre-line">{item.notes}</p>}</td></tr>)}</tbody></table></div></section>}
+  {p.testResults?.length>0 && <section class={panels}><h2 class="text-2xl font-bold mb-5">Test Results</h2><div class="space-y-5">{p.testResults.map(test=><article class="border-l-2 border-secondary pl-4"><h3 class="font-semibold">{test.metric}</h3><p class="text-secondary text-xl mt-1 break-words">{test.result}</p>{test.conditions&&<p class="text-gray-300 mt-2 whitespace-pre-line">{test.conditions}</p>}{test.evidence&&<a class="inline-block text-secondary text-sm mt-2" href={test.evidence} target="_blank" rel="noopener noreferrer">Test report ↗</a>}</article>)}</div></section>}
+  {videos.length>0 && <section class={panels}><h2 class="text-2xl font-bold mb-5">Video Demos</h2><div class="space-y-8">{videos.map(video=><figure><h3 class="font-semibold text-lg mb-3">{video.title}</h3><iframe src={video.media.embed} title={`${video.title} — ${video.media.provider}`} loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" class="w-full aspect-video min-h-[200px] rounded-lg border-0 bg-black"/>{video.caption&&<figcaption class="text-gray-300 mt-3 whitespace-pre-line">{video.caption}</figcaption>}<a href={video.media.url} target="_blank" rel="noopener noreferrer" class="inline-block text-secondary text-sm mt-3">Watch on {video.media.provider} ↗</a></figure>)}</div></section>}
+</div>
