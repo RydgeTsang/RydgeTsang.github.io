@@ -13,6 +13,12 @@
 
 项目网址标识决定详情页地址，已分享出去的项目尽量不要修改标识。封面建议压缩后再上传。源码、演示和文档链接为空时不显示按钮。
 
+## 编辑 About Me
+
+后台左侧选择「关于我 About Me」，可修改标题、头像、姓名、职业、个人介绍、联系方式、技能、经历和动态。技能分组、经历、动态支持增删与拖动排序，列表为空时隐藏对应区域。头像上传优先于头像网址。原页面文字已保留，请按实际情况更新。
+
+保存后在 http://localhost:4321/about.html 预览，再提交并推送 `cms` 发布。
+
 ## 开发
 
 安装 Node.js 22 LTS 和 pnpm 10 后：
@@ -28,7 +34,9 @@ pnpm build
 - `src/lib/categories.ts`：后台和网站共用分类。
 - `src/components/`：公共导航、页脚、项目卡片。
 - `src/pages/`：页面与项目详情页模板。
-- `src/legacy/`：保留的首页、About、Contact 正文；这些页面暂时通过代码编辑。
+- `src/legacy/`：保留的首页、Contact 正文；这些页面暂时通过代码编辑。
+- `src/content/about.json` 和 `src/content/about/`：About Me 内容，后台自动维护。
+- `src/lib/about-schema.ts`：About Me 后台字段。
 - `src/styles.css`、`tailwind.config.mjs`：全站样式和设计设置。
 - `public/images/projects/`：上传图片。
 

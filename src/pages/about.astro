@@ -1,55 +1,59 @@
 ---
 import Layout from '../components/Layout.astro';
-import content from '../legacy/about.html?raw';
+import { reader } from '../lib/projects';
+import Markdoc from '@markdoc/markdoc';
+const a = await reader.singletons.about.readOrThrow();
+const { node } = await a.bio();
+const bio = Markdoc.renderers.html(Markdoc.transform(node));
+const avatar = a.avatar || a.avatarUrl;
 ---
-<Layout title="About | Rydge's Code Space"><Fragment set:html={content} /></Layout>
-<script is:inline>
-        // 设置当前年份
-        
-        
-        // 技能条动画
-        document.addEventListener('DOMContentLoaded', () => {
-            // 检测元素是否在视口中
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const skillBars = entry.target.querySelectorAll('.skill-progress');
-                        skillBars.forEach(bar => {
-                            const width = bar.getAttribute('data-width');
-                            setTimeout(() => {
-                                bar.style.width = width;
-                            }, 300);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            // 观察技能部分
-            const skillSection = document.querySelector('.bg-dark\\/60:nth-of-type(1)');
-            if (skillSection) {
-                observer.observe(skillSection);
-            }
-
-            // 动态更新卡片动画
-            const updateObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = "1";
-                            entry.target.style.transform = "translateY(0)";
-                        }, index * 150); // 错开动画时间
-                        updateObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // 观察所有更新卡片
-            document.querySelectorAll('.update-card').forEach(card => {
-                card.style.opacity = "0";
-                card.style.transform = "translateY(20px)";
-                card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-                updateObserver.observe(card);
-            });
-        });
-    </script>
+<Layout title="About | Rydge's Code Space">
+  <main class="container mx-auto px-4 py-12 md:py-16">
+    <header class="text-center mb-16">
+      <h1 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-4">{a.heading} <span class="text-primary">{a.headingAccent}</span></h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">{a.intro}</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-16">
+      <div class="lg:col-span-1">
+        <section class="bg-dark/60 border border-gray-700 rounded-lg p-6 md:p-8 backdrop-blur-sm h-full">
+          {avatar && <div class="flex justify-center mb-6"><div class="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/30"><img src={avatar} alt={`${a.name}'s profile photo`} class="w-full h-full object-cover" /></div></div>}
+          <h2 class="text-2xl font-bold text-center mb-2">{a.name}</h2>
+          <p class="text-primary text-center mb-6">{a.role}</p>
+          <div class="prose text-gray-300" set:html={bio} />
+          {(a.email || a.location || a.websiteLabel || a.websiteUrl) && <div class="mt-8 pt-6 border-t border-gray-800">
+            <h3 class="font-bold mb-4">{a.contactHeading}</h3>
+            <ul class="space-y-3 break-words">
+              {a.email && <li class="flex items-center"><i class="fa fa-envelope text-primary w-5" aria-hidden="true"/><a href={`mailto:${a.email}`} class="ml-3 text-gray-300 hover:text-primary">{a.email}</a></li>}
+              {a.location && <li class="flex items-center"><i class="fa fa-map-marker text-primary w-5" aria-hidden="true"/><span class="ml-3 text-gray-300">{a.location}</span></li>}
+              {(a.websiteUrl || a.websiteLabel) && <li class="flex items-center"><i class="fa fa-globe text-primary w-5" aria-hidden="true"/>{a.websiteUrl ? <a href={a.websiteUrl} class="ml-3 text-gray-300 hover:text-primary">{a.websiteLabel || a.websiteUrl}</a> : <span class="ml-3 text-gray-300">{a.websiteLabel}</span>}</li>}
+            </ul>
+          </div>}
+        </section>
+      </div>
+      <div class="lg:col-span-2 space-y-10">
+        {a.skills.length>0 && <section class="bg-dark/60 border border-gray-700 rounded-lg p-6 md:p-8 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold mb-6">{a.skillsHeading}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">{a.skills.map(group=><div>
+            <h3 class="text-lg font-semibold mb-4 text-primary">{group.title}</h3>
+            <div class="space-y-4">{group.items.map(skill=><div>
+              <div class="flex justify-between mb-1"><span class="text-sm">{skill.name}</span><span class="text-sm">{skill.level}%</span></div>
+              <div class="skill-bar" role="meter" aria-label={skill.name} aria-valuenow={skill.level} aria-valuemin="0" aria-valuemax="100"><div class="skill-progress" style={`width:${skill.level}%`} /></div>
+            </div>)}</div>
+          </div>)}</div>
+        </section>}
+        {a.journey.length>0 && <section class="bg-dark/60 border border-gray-700 rounded-lg p-6 md:p-8 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold mb-6">{a.journeyHeading}</h2>
+          <div class="space-y-6">{a.journey.map(item=><div class="timeline-item"><div class="timeline-dot"/><h3 class="text-xl font-semibold">{item.title}</h3><p class="text-primary mb-2">{item.period}</p><p class="text-gray-300 whitespace-pre-line">{item.description}</p></div>)}</div>
+        </section>}
+      </div>
+    </div>
+    {a.updates.length>0 && <section class="bg-dark/60 border border-gray-700 rounded-lg p-6 md:p-8 backdrop-blur-sm">
+      <h2 class="text-2xl font-bold mb-8">{a.updatesHeading}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{a.updates.map(item=><article class="update-card">
+        <div class="flex justify-between items-start gap-3 mb-4"><span class="text-xs bg-primary/20 text-primary px-3 py-1 rounded-full">{item.category}</span><span class="text-xs text-gray-400">{item.dateLabel}</span></div>
+        <h3 class="text-xl font-bold mb-3">{item.title}</h3><p class="text-gray-300 mb-4 text-sm whitespace-pre-line">{item.description}</p>
+        {item.link && <a href={item.link} class="text-primary hover:text-primary/80 text-sm">{item.linkLabel || 'Read more'} →</a>}
+      </article>)}</div>
+    </section>}
+  </main>
+</Layout>

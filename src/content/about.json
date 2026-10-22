@@ -1,0 +1,105 @@
+{
+  "heading": "About",
+  "headingAccent": "Me",
+  "intro": "Get to know more about my journey, skills, and what drives me in the world of coding.",
+  "name": "Rydge",
+  "role": "Full Stack Developer",
+  "avatarUrl": "https://picsum.photos/id/1/200/200",
+  "contactHeading": "Contact Info",
+  "email": "contact@rydge.dev",
+  "location": "San Francisco, CA",
+  "websiteLabel": "rydge.dev",
+  "skillsHeading": "My Skills",
+  "skills": [
+    {
+      "title": "Frontend Development",
+      "items": [
+        {
+          "name": "HTML/CSS",
+          "level": 95
+        },
+        {
+          "name": "JavaScript",
+          "level": 90
+        },
+        {
+          "name": "React",
+          "level": 85
+        },
+        {
+          "name": "Vue.js",
+          "level": 75
+        }
+      ]
+    },
+    {
+      "title": "Backend & Other",
+      "items": [
+        {
+          "name": "Node.js",
+          "level": 80
+        },
+        {
+          "name": "Python",
+          "level": 75
+        },
+        {
+          "name": "Database (SQL/NoSQL)",
+          "level": 80
+        },
+        {
+          "name": "Git & CI/CD",
+          "level": 85
+        }
+      ]
+    }
+  ],
+  "journeyHeading": "My Journey",
+  "journey": [
+    {
+      "title": "Senior Frontend Developer",
+      "period": "TechCorp Inc. - 2020 Present",
+      "description": "Leading frontend development for enterprise applications, managing a team of 5 developers, and implementing modern JavaScript frameworks and CI/CD pipelines."
+    },
+    {
+      "title": "Full Stack Developer",
+      "period": "WebSolutions Co. - 2018 2020",
+      "description": "Developed and maintained full stack web applications using React, Node.js, and MongoDB. Collaborated with designers to implement responsive and accessible user interfaces."
+    },
+    {
+      "title": "Junior Web Developer",
+      "period": "DigitalAgency - 2016 2018",
+      "description": "Worked on client websites and web applications, focusing on HTML, CSS, JavaScript, and WordPress development. Assisted in troubleshooting and optimizing existing sites."
+    },
+    {
+      "title": "Computer Science Degree",
+      "period": "University of Technology - 2012 2016",
+      "description": "Bachelor's degree in Computer Science with focus on web technologies and software engineering. Participated in coding competitions and open source projects."
+    }
+  ],
+  "updatesHeading": "Latest Updates",
+  "updates": [
+    {
+      "title": "ARM Embedded Controller",
+      "category": "New Project",
+      "dateLabel": "2 days ago",
+      "description": "Just finished my latest ARM project - a custom firmware for Cortex-M4 microcontroller with sensor integration. Check out the project details in my portfolio!",
+      "link": "/projects.html",
+      "linkLabel": "Read more"
+    },
+    {
+      "title": "Exploring Rust for Systems",
+      "category": "Learning",
+      "dateLabel": "1 week ago",
+      "description": "Started diving into Rust programming language for system-level development. The memory safety features are impressive! Documenting my learning journey.",
+      "linkLabel": "Read more"
+    },
+    {
+      "title": "Contributed to Vue Library",
+      "category": "Open Source",
+      "dateLabel": "2 weeks ago",
+      "description": "Merged my first pull request to a popular Vue.js component library. Fixed a responsive design issue on mobile devices.",
+      "linkLabel": "View PR"
+    }
+  ]
+}

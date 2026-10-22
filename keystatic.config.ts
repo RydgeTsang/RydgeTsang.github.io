@@ -1,6 +1,7 @@
+import { about } from './src/lib/about-schema';
 import { config, fields, collection } from '@keystatic/core';
 import { categories } from './src/lib/categories';
-export default config({storage:{kind:'local'},collections:{projects:collection({label:'项目 Projects',slugField:'title',path:'src/content/projects/*',format:{data:'json'},schema:{
+export default config({storage:{kind:'local'},singletons:{about},collections:{projects:collection({label:'项目 Projects',slugField:'title',path:'src/content/projects/*',format:{data:'json'},schema:{
  title:fields.slug({name:{label:'项目名称',validation:{isRequired:true}}}),
  summary:fields.text({label:'简短介绍',multiline:true,validation:{isRequired:true}}),
  category:fields.select({label:'分类',options:categories,defaultValue:'app'}),
