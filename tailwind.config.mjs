@@ -1,0 +1,1 @@
+export default {content:['./src/**/*.{astro,html,js,ts}'],theme:{extend:{colors:{primary:'#165DFF',secondary:'#36CFC9',dark:'#1D2129',light:'#F2F3F5'},fontFamily:{code:['Consolas','Monaco','monospace'],sans:['Inter','system-ui','sans-serif']}}}};

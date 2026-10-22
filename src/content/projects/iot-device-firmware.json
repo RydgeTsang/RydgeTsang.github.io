@@ -1,0 +1,18 @@
+{
+  "title": "IoT Device Firmware",
+  "summary": "Low-power IoT device firmware for environmental monitoring using ARM-based microprocessor.",
+  "category": "arm",
+  "date": "2023-08-05",
+  "tags": [
+    "RTOS",
+    "BLE",
+    "ARM Cortex-M0"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false,
+  "source": "",
+  "demo": "",
+  "docs": "",
+  "cover": null
+}

@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Rydge's Code Space</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#165DFF',
-                        secondary: '#36CFC9',
-                        dark: '#1D2129',
-                        light: '#F2F3F5'
-                    },
-                    fontFamily: {
-                        code: ['Consolas', 'Monaco', 'monospace'],
-                        sans: ['Inter', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .bg-gradient-coder {
-                background: linear-gradient(135deg, #1D2129 0%, #303846 100%);
-            }
-            .skill-bar {
-                @apply h-2 bg-gray-700 rounded-full overflow-hidden;
-            }
-            .skill-progress {
-                @apply h-full bg-primary rounded-full transition-all duration-1000 ease-out;
-            }
-            .timeline-item {
-                @apply relative pl-8 pb-8 border-l border-gray-700 last:border-0 last:pb-0;
-            }
-            .timeline-dot {
-                @apply absolute left-[-6px] top-0 w-3 h-3 rounded-full bg-primary border-2 border-dark;
-            }
-            .update-card {
-                @apply bg-dark/60 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:border-primary/50 hover:translate-y-[-5px];
-            }
-        }
-    </style>
-</head>
-<body class="bg-gradient-coder min-h-screen text-light font-sans">
-    <!-- 导航栏 -->
-    <nav class="container mx-auto px-4 py-6 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <i class="fa fa-code text-primary text-2xl"></i>
-            <span class="font-code font-bold text-xl">Rydge's Code Space</span>
-        </div>
-        <div class="hidden md:flex space-x-8">
-            <a href="index.html" class="hover:text-primary transition-colors duration-300">Home</a>
-            <a href="projects.html" class="hover:text-primary transition-colors duration-300">Projects</a>
-            <a href="about.html" class="text-primary font-medium">About</a>
-            <a href="contact.html" class="hover:text-primary transition-colors duration-300">Contact</a>
-        </div>
-        <div class="md:hidden">
-            <i class="fa fa-bars text-xl"></i>
-        </div>
-    </nav>
-
-    <!-- 主内容区 -->
-    <main class="container mx-auto px-4 py-12 md:py-16">
+<main class="container mx-auto px-4 py-12 md:py-16">
         <!-- 页面标题 -->
         <div class="text-center mb-16">
             <h1 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-4">
@@ -295,7 +227,7 @@
                         Just finished my latest ARM project - a custom firmware for Cortex-M4 microcontroller with sensor integration.
                         Check out the project details in my portfolio!
                     </p>
-                    <a href="projects.html" class="text-primary hover:text-primary/80 text-sm flex items-center transition-colors">
+                    <a href="/projects.html" class="text-primary hover:text-primary/80 text-sm flex items-center transition-colors">
                         Read more <i class="fa fa-angle-right ml-1"></i>
                     </a>
                 </div>
@@ -334,69 +266,3 @@
             </div>
         </div>
     </main>
-
-    <!-- 页脚 -->
-    <footer class="container mx-auto px-4 py-8 border-t border-gray-800 mt-16">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; <span id="current-year"></span> Rydge's Code Space. All rights reserved.
-            </p>
-            <p class="text-gray-500 text-sm">
-                Built with <i class="fa fa-heart text-red-500"></i> and hosted on GitHub Pages
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // 设置当前年份
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // 技能条动画
-        document.addEventListener('DOMContentLoaded', () => {
-            // 检测元素是否在视口中
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const skillBars = entry.target.querySelectorAll('.skill-progress');
-                        skillBars.forEach(bar => {
-                            const width = bar.getAttribute('data-width');
-                            setTimeout(() => {
-                                bar.style.width = width;
-                            }, 300);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            // 观察技能部分
-            const skillSection = document.querySelector('.bg-dark\\/60:nth-of-type(1)');
-            if (skillSection) {
-                observer.observe(skillSection);
-            }
-
-            // 动态更新卡片动画
-            const updateObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = "1";
-                            entry.target.style.transform = "translateY(0)";
-                        }, index * 150); // 错开动画时间
-                        updateObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // 观察所有更新卡片
-            document.querySelectorAll('.update-card').forEach(card => {
-                card.style.opacity = "0";
-                card.style.transform = "translateY(20px)";
-                card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-                updateObserver.observe(card);
-            });
-        });
-    </script>
-</body>
-</html>
-    

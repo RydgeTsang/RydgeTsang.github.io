@@ -1,0 +1,18 @@
+{
+  "title": "Code Snippet Manager",
+  "summary": "A tool to store and organize code snippets, with syntax highlighting and category filtering.",
+  "category": "tools",
+  "date": "2023-09-28",
+  "tags": [
+    "Vue.js",
+    "Highlight.js",
+    "Firebase"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false,
+  "source": "",
+  "demo": "",
+  "docs": "",
+  "cover": null
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Weather Dashboard",
+  "summary": "A weather app that fetches real-time data from OpenWeather API, with 5-day forecast and location search.",
+  "category": "web",
+  "date": "2023-11-02",
+  "tags": [
+    "React",
+    "API Integration",
+    "Tailwind CSS"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false,
+  "source": "",
+  "demo": "",
+  "docs": "",
+  "cover": null
+}

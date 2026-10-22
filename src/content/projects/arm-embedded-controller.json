@@ -1,0 +1,14 @@
+{
+  "title": "ARM Embedded Controller",
+  "summary": "Custom firmware for ARM Cortex-M4 microcontroller with sensor integration and real-time data processing.",
+  "category": "arm",
+  "date": "2023-11-18",
+  "tags": [
+    "C/C++",
+    "ARM Cortex-M4",
+    "Embedded Systems"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false
+}

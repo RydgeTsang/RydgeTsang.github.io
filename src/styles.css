@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-coder {
+                background: linear-gradient(135deg, #1D2129 0%, #303846 100%);
+            }
+            .typing-effect::after {
+                content: "|";
+                animation: blink 1s step-end infinite;
+            }
+            @keyframes blink {
+                from, to { opacity: 1; }
+                50% { opacity: 0; }
+            }
+        }
+    
+
+        @layer utilities {
+            .bg-gradient-coder {
+                background: linear-gradient(135deg, #1D2129 0%, #303846 100%);
+            }
+            .skill-bar {
+                @apply h-2 bg-gray-700 rounded-full overflow-hidden;
+            }
+            .skill-progress {
+                @apply h-full bg-primary rounded-full transition-all duration-1000 ease-out;
+            }
+            .timeline-item {
+                @apply relative pl-8 pb-8 border-l border-gray-700 last:border-0 last:pb-0;
+            }
+            .timeline-dot {
+                @apply absolute left-[-6px] top-0 w-3 h-3 rounded-full bg-primary border-2 border-dark;
+            }
+            .update-card {
+                @apply bg-dark/60 border border-gray-700 rounded-lg p-6 transition-all duration-300 hover:border-primary/50 hover:translate-y-[-5px];
+            }
+        }
+    
+
+        @layer utilities {
+            .bg-gradient-coder {
+                background: linear-gradient(135deg, #1D2129 0%, #303846 100%);
+            }
+            .social-icon {
+                @apply w-12 h-12 rounded-full flex items-center justify-center text-light transition-all duration-300;
+            }
+            .social-card {
+                @apply bg-dark/60 border border-gray-700 rounded-lg p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/50;
+            }
+        }
+    
+
+        @layer utilities {
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(22, 93, 255, 0.1);
+            }
+            .bg-gradient-coder {
+                background: linear-gradient(135deg, #1D2129 0%, #303846 100%);
+            }
+            .project-card {
+                display: none;
+            }
+            .project-card.active {
+                display: block;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        }
+    
+.prose p{margin:1rem 0}.prose h2{font-size:1.6rem;margin:2rem 0 1rem}.prose img{max-width:100%;border-radius:12px}.prose pre{overflow:auto;padding:1rem;background:#111827}.prose a{color:#36CFC9}.prose ul{list-style:disc;padding-left:1.5rem}

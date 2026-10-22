@@ -1,0 +1,18 @@
+{
+  "title": "E-commerce Platform",
+  "summary": "Full-featured e-commerce platform with product management, shopping cart, and payment integration.",
+  "category": "web",
+  "date": "2023-10-30",
+  "tags": [
+    "Node.js",
+    "MongoDB",
+    "Express"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false,
+  "source": "",
+  "demo": "",
+  "docs": "",
+  "cover": null
+}

@@ -1,0 +1,8 @@
+---
+import Layout from '../components/Layout.astro';
+import content from '../legacy/contact.html?raw';
+---
+<Layout title="Contact | Rydge's Code Space"><Fragment set:html={content} /></Layout>
+<script is:inline>
+document.getElementById('contact-form').addEventListener('submit',function(e){e.preventDefault();const name=document.getElementById('name').value;const email=document.getElementById('email').value;const message=document.getElementById('message').value;window.location.href='mailto:rydge.zeng@outlook.com?subject='+encodeURIComponent('Website enquiry from '+name)+'&body='+encodeURIComponent(message+'\n\nFrom: '+name+' <'+email+'>');});
+</script>

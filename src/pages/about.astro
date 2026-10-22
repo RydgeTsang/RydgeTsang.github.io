@@ -1,0 +1,55 @@
+---
+import Layout from '../components/Layout.astro';
+import content from '../legacy/about.html?raw';
+---
+<Layout title="About | Rydge's Code Space"><Fragment set:html={content} /></Layout>
+<script is:inline>
+        // 设置当前年份
+        
+        
+        // 技能条动画
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检测元素是否在视口中
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.skill-progress');
+                        skillBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 300);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // 观察技能部分
+            const skillSection = document.querySelector('.bg-dark\\/60:nth-of-type(1)');
+            if (skillSection) {
+                observer.observe(skillSection);
+            }
+
+            // 动态更新卡片动画
+            const updateObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+                        }, index * 150); // 错开动画时间
+                        updateObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // 观察所有更新卡片
+            document.querySelectorAll('.update-card').forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+                card.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+                updateObserver.observe(card);
+            });
+        });
+    </script>

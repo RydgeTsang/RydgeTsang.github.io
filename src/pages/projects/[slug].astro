@@ -1,0 +1,6 @@
+---
+import Layout from '../../components/Layout.astro';import {projects} from '../../lib/projects';import Markdoc from '@markdoc/markdoc';
+export async function getStaticPaths(){return (await projects()).map(project=>({params:{slug:project.slug},props:{project}}));}
+const {project}=Astro.props;const p=project.entry;const {node}=await p.body();const html=Markdoc.renderers.html(Markdoc.transform(node));
+---
+<Layout title={`${p.title} | Rydge's Code Space`}><main class="max-w-4xl mx-auto px-4 py-12"><a href="/projects.html" class="text-secondary">← All Projects</a><h1 class="text-4xl font-bold mt-8 mb-4">{p.title}</h1><p class="text-gray-400 mb-6">{p.date} · {p.tags.join(' / ')}</p>{p.cover&&<img src={p.cover} alt={p.title} class="w-full rounded-lg mb-8"/>}<div class="prose text-gray-200" set:html={html}/><div class="flex gap-5 mt-8">{[['Source Code',p.source],['Demo',p.demo],['Documentation',p.docs]].filter(([,url])=>url).map(([label,url])=><a href={url} class="text-secondary">{label} ↗</a>)}</div></main></Layout>

@@ -1,0 +1,11 @@
+---
+import '../styles.css';
+const {title="Rydge's Code Space"}=Astro.props;
+const links=[['Home','/index.html'],['Projects','/projects.html'],['About','/about.html'],['Contact','/contact.html']];
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><title>{title}</title><meta name="description" content="Rydge's projects, experiments and programming journey."/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"/></head>
+<body class="bg-gradient-coder min-h-screen text-light font-sans">
+<nav class="container mx-auto px-4 py-6 flex flex-wrap items-center justify-between gap-4"><a href="/" class="font-code font-bold text-xl"><i class="fa fa-code text-primary mr-2"></i>Rydge's Code Space</a><div class="flex flex-wrap gap-5">{links.map(([label,url])=><a href={url} class="hover:text-primary" aria-current={Astro.url.pathname===url?'page':undefined}>{label}</a>)}</div></nav>
+<slot/>
+<footer class="container mx-auto px-4 py-8 border-t border-gray-800 mt-16 text-gray-400 text-sm flex flex-wrap justify-between gap-4"><p>© {new Date().getFullYear()} Rydge's Code Space. All rights reserved.</p><p>Hosted on GitHub Pages</p></footer>
+</body></html>

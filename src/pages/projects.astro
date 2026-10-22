@@ -1,0 +1,10 @@
+---
+import Layout from '../components/Layout.astro';import ProjectCard from '../components/ProjectCard.astro';import {projects} from '../lib/projects';import {categories} from '../lib/categories';
+const all=await projects();const filters=categories.filter(c=>all.some(p=>p.entry.category===c.value));
+---
+<Layout title="Projects | Rydge's Code Space"><main class="container mx-auto px-4 py-12 md:py-16"><header class="text-center mb-12"><h1 class="text-4xl font-bold mb-4">My <span class="text-primary">Projects</span></h1><p class="text-gray-300">A collection of my coding works, from personal experiments to practical applications.</p></header>
+<div class="flex flex-wrap justify-center gap-4 mb-10" aria-label="Project categories">{[{label:'All Projects',value:'all'},...filters].map(c=><button class="filter-btn border border-gray-700 px-5 py-2 rounded-lg aria-pressed:bg-primary" data-filter={c.value} aria-pressed={c.value==='all'}>{c.label}</button>)}</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">{all.map(project=><ProjectCard project={project}/>)}</div>{all.length===0&&<p class="text-center">Projects coming soon.</p>}</main></Layout>
+<script>
+document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));document.querySelectorAll<HTMLElement>('[data-category]').forEach(card=>card.classList.toggle('active',btn.dataset.filter==='all'||card.dataset.category===btn.dataset.filter));}));
+</script>

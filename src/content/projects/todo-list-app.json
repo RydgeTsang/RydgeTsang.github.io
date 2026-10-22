@@ -1,0 +1,18 @@
+{
+  "title": "Todo List App",
+  "summary": "A responsive todo list with local storage support, task categorization, and deadline reminders.",
+  "category": "javascript",
+  "date": "2023-10-15",
+  "tags": [
+    "HTML/CSS",
+    "JavaScript",
+    "LocalStorage"
+  ],
+  "status": "published",
+  "order": 0,
+  "featured": false,
+  "source": "",
+  "demo": "",
+  "docs": "",
+  "cover": null
+}

@@ -1,0 +1,1 @@
+export const categories = [{label:'ARM Development',value:'arm'},{label:'FPGA Development',value:'fpga'},{label:'AI Lab',value:'ai'},{label:'Application',value:'app'},{label:'JavaScript',value:'javascript'},{label:'Web Development',value:'web'},{label:'Tools',value:'tools'}];

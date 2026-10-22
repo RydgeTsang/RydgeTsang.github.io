@@ -1,0 +1,130 @@
+<main class="container mx-auto px-4 py-12 md:py-16">
+        <!-- 页面标题 -->
+        <div class="text-center mb-12">
+            <h1 class="text-[clamp(1.8rem,4vw,3rem)] font-bold mb-4">
+                Get <span class="text-primary">In Touch</span>
+            </h1>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+                Feel free to reach out through any of these channels. I'll get back to you as soon as possible!
+            </p>
+        </div>
+
+        <!-- 联系内容区 -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <!-- 左侧：联系方式卡片 -->
+            <div class="social-card">
+                <h2 class="text-2xl font-bold mb-8">Contact Channels</h2>
+
+                <!-- 邮箱联系 -->
+                <div class="mb-8 p-5 bg-dark/80 rounded-lg hover:bg-dark transition-colors">
+                    <div class="flex items-center mb-4">
+                        <div class="social-icon bg-primary/20 text-primary mr-4">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Email</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3 ml-16">
+                        The best way to reach me directly for collaborations or detailed questions.
+                    </p>
+                    <a href="mailto:rydge.zeng@outlook.com"
+                        class="ml-16 text-primary hover:text-primary/80 flex items-center transition-colors">
+                        <i class="fa fa-link mr-2"></i> rydge.zeng@outlook.com
+                    </a>
+                </div>
+
+                <!-- 社交平台 -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="social-icon bg-primary/20 text-primary mr-4">
+                            <i class="fa fa-share-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Social Platforms</h3>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 ml-16">
+                        <!-- GitHub -->
+                        <a href="#" class="flex items-center p-3 bg-dark/80 rounded-lg hover:bg-dark transition-colors">
+                            <div class="social-icon bg-[#24292e]/50 text-[#24292e] w-10 h-10 mr-3">
+                                <i class="fa fa-github"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">GitHub</h4>
+                                <p class="text-sm text-gray-400">Code repositories</p>
+                            </div>
+                        </a>
+
+                        <!-- Twitter -->
+                        <a href="#" class="flex items-center p-3 bg-dark/80 rounded-lg hover:bg-dark transition-colors">
+                            <div class="social-icon bg-[#1da1f2]/50 text-[#1da1f2] w-10 h-10 mr-3">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Twitter</h4>
+                                <p class="text-sm text-gray-400">Updates & thoughts</p>
+                            </div>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="#" class="flex items-center p-3 bg-dark/80 rounded-lg hover:bg-dark transition-colors">
+                            <div class="social-icon bg-[#0077b5]/50 text-[#0077b5] w-10 h-10 mr-3">
+                                <i class="fa fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">LinkedIn</h4>
+                                <p class="text-sm text-gray-400">Professional profile</p>
+                            </div>
+                        </a>
+
+                        <!-- CodePen -->
+                        <a href="#" class="flex items-center p-3 bg-dark/80 rounded-lg hover:bg-dark transition-colors">
+                            <div class="social-icon bg-[#000000]/50 text-[#000000] w-10 h-10 mr-3">
+                                <i class="fa fa-codepen"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">CodePen</h4>
+                                <p class="text-sm text-gray-400">Code experiments</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：简短联系表单 -->
+            <div class="social-card">
+                <h2 class="text-2xl font-bold mb-6">Write an Email</h2>
+                <p class="text-gray-400 mb-4">This opens your email app. Review and send the email there.</p><form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 姓名输入 -->
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2 text-sm">Your Name</label>
+                            <input type="text" id="name"
+                                class="w-full bg-dark/80 border border-gray-700 rounded-lg px-4 py-3 text-light focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                placeholder="John Doe" required>
+                        </div>
+
+                        <!-- 邮箱输入 -->
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2 text-sm">Your Email</label>
+                            <input type="email" id="email"
+                                class="w-full bg-dark/80 border border-gray-700 rounded-lg px-4 py-3 text-light focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                                placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <!-- 消息输入 -->
+                    <div>
+                        <label for="message" class="block text-gray-300 mb-2 text-sm">Your Message</label>
+                        <textarea id="message" rows="5"
+                            class="w-full bg-dark/80 border border-gray-700 rounded-lg px-4 py-3 text-light focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none"
+                            placeholder="Hello, I'd like to discuss..." required></textarea>
+                    </div>
+
+                    <!-- 提交按钮 -->
+                    <button type="submit"
+                        class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center">
+                        <i class="fa fa-paper-plane mr-2"></i> Open Email App
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
